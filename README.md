@@ -100,3 +100,13 @@ constellationType。GNSSコンステレーションタイプ。constellation_typ
 - ディスカッション読んだ
   - [外部データセット](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/238579)
   - [ベースラインの位置推定の方法](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/238583)(いつか役に立ちそう)
+    - ベースライン推定値の平滑化。これには基本的にドメインの知識は必要ありません。
+    - 加速度計のような他の携帯電話機器からの読み取り値の統合。
+    - Derived.csvファイルを使った衛星の三角測量。
+    - gnssの生ログから直接三角測量を行う。これは動作させるのに時間がかかるかもしれませんが、エラー修正の機会が増えるはずです。
+    - その地域の基地局からの衛星測定値のようなコントロールのための外部データを組み込む。
+  - の段階に分かれているらしい
+  - 三角測量 : <img width="663" alt="スクリーンショット 2021-05-30 17 49 02" src="https://user-images.githubusercontent.com/71954051/120098164-549c6b80-c16f-11eb-9906-829d982f1fe1.png">
+
+  - GNSS : GNSS(global navigation satellite system)は、衛星測位システムの総称で、複数の測位衛星から時刻情報つきの信号を受信し、地上での現在位置を計測するシステムです。 GPS(global positioning system)はアメリカ合衆国が開発したシステムであり、GNSSの1つです。
+
