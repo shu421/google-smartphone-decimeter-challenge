@@ -95,7 +95,8 @@ constellationType。GNSSコンステレーションタイプ。constellation_typ
 
 # log
 ### 20200530
-- join(ころんびあさんのツイートを見て初心者でもいけるって書いてあったから)
+- 最後まで走り切ろう。titanicの壁を越えたい
+- join(ころんびあさんのツイートに初心者でもいけるって書いてあったから)
 - data download
 - ピン留めされてるディスカッション読んだ
   - [外部データセット](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/238579)
