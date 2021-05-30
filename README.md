@@ -106,7 +106,8 @@ constellationType。GNSSコンステレーションタイプ。constellation_typ
     - gnssの生ログから直接三角測量を行う。これは動作させるのに時間がかかるかもしれませんが、エラー修正の機会が増えるはずです。
     - その地域の基地局からの衛星測定値のようなコントロールのための外部データを組み込む。
   - の段階に分かれているらしい
-  - 三角測量 : <img width="663" alt="スクリーンショット 2021-05-30 17 49 02" src="https://user-images.githubusercontent.com/71954051/120098164-549c6b80-c16f-11eb-9906-829d982f1fe1.png">
-
+  - 三角測量
+    - <img width="663" alt="スクリーンショット 2021-05-30 17 49 02" src="https://user-images.githubusercontent.com/71954051/120098164-549c6b80-c16f-11eb-9906-829d982f1fe1.png">
+    - [簡単な説明](https://www.kurabo.co.jp/el/room/3d/page1.html)
   - GNSS : GNSS(global navigation satellite system)は、衛星測位システムの総称で、複数の測位衛星から時刻情報つきの信号を受信し、地上での現在位置を計測するシステムです。 GPS(global positioning system)はアメリカ合衆国が開発したシステムであり、GNSSの1つです。
 
