@@ -89,4 +89,12 @@ receivedSvTimeInGpsNanos - チップセットが受信した信号の送信時�
 
 satClkBiasM - 信号送信時刻(receivedSvTimeInGpsNanos)におけるハードウェア遅延を組み合わせた衛星時刻補正(メートル単位)。その時間に相当するものがsatClkBiasNanosと呼ばれています。
 
-satClkBiasNanosは、satelliteTimeCorrectionからsatelliteHardwareを差し引いた値に相当します。 
+satClkBiasNanosは、satelliteTimeCorrectionからsatelliteHardwareを差し引いた値に相当します。
+
+
+# log
+### 20200530
+- join(ころんびあさんのツイートを見て初心者でもいけるって書いてあったから)
+- data download
+
+constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvで提供されるマッピング文字列値を持つ整数値。
