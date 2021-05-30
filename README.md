@@ -25,3 +25,68 @@ phone,millisSinceGpsEpoch,latDeg,lngDeg
 2020-05-15-US-MTV-1_Pixel4,1273608786432,53.599227001298125,-2.4339795741464334
 2020-05-15-US-MTV-1_Pixel4,1273608787432,53.599227001298125,-2.4339795741464334    
 
+# Data Description
+このチャレンジでは、GPS衛星からの信号、加速度計の測定値、ジャイロスコープの測定値など、携帯電話の位置を決定するのに役立つさまざまな機器からのデータを提供します。
+
+この課題では、車線レベルのマッピングなどの後処理に重点を置いて設計されているため、将来的にはルート上のデータを利用して、可能な限り正確な位置を生成することができます。また、複数の機種で構成される路線も多いため、隣接する機種の情報を利用して推定を行うこともできます。一般的なGNSS測位アルゴリズムの開発を促進するため、携帯電話内のGPSチップセットの位置情報は提供されません。これは、携帯電話のモデルなどによって異なるメーカー独自のアルゴリズムに基づいているためです。
+
+データ収集プロセスの詳細については、本稿をご参照ください。このデータセット／課題に基づいて作品を発表する場合は、コンペティションルールに基づいて適切に引用してください。
+
+ファイル名
+[train]/[drive_id]/[phone_name]/ground_truth.csv - トレーニングセットでのみ提供されます。予想されるタイムスタンプでの参照場所。
+
+
+train/test]/[drive_id]/[phone_name]/supplemental/[phone_name][.20o/.21o/.nmea] - GPSコミュニティで使用されている他のフォーマットのgnssログと同等のデータ。
+
+
+baseline_locations_[train/test].csv - 簡単な方法で生成された推定座標です。
+
+
+ground_truth.csv - 予想されるタイムスタンプでの基準となる位置。
+
+millisSinceGpsEpoch - GPSエポック(1980/1/6 midnight UTC)からのミリ秒単位の整数値。その値は次のようになります
+
+round(Raw::TimeNanos - Raw::FullBiasNanos / 1000000.0)
+
+となります。この値は、Raw文に記述された各エポックごとに
+
+latDeg, lngDeg - 基準となるGNSS受信機（NovAtel SPAN）で推定されたWGS84の緯度、経度（10進法）。位置を非整数のタイムスタンプに合わせるために、必要に応じて線形補間が適用されています。
+
+heightAboveWgs84EllipsoidM - 基準となるGNSS受信機によって推定されたWGS84楕円体からの高さ（単位：メートル）です。
+
+timeSinceFirstFixSeconds - 最初の位置修正からの経過時間（秒）。
+
+hDop - Horizontal dilution of precision DOP（GGA文中のDOPの水平方向の希釈）で、測定値の誤差が最終的な水平方向の位置推定にどのように影響するかを表しています。
+
+vDop - 精密DOPの垂直方向の希釈（GSA文より）、測定値の誤差が最終的な垂直方向の位置推定にどのように影響するかを説明しています。
+
+speedMps - 地上での速度をメートル毎秒で表したものです。
+
+courseDegree - 地上での真北を基準とした時計回りのコース角度（単位：度）です。
+
+
+[train/test]/[drive_id]/[phone_name]/[phone_name]_derived.csv - 生のGNSS測定値から派生したGNSS中間値で、便宜的に提供されています。
+
+これらの派生値を使用して、補正された疑似距離（電話機から衛星までの幾何学的な距離の近似値）を次のように計算できます： correctedPrM = rawPrM + satClkBiasM - isrbM - ionoDelayM - tropoDelayM。ベースラインの位置は、補正されたPrMと衛星の位置を用いて、標準的な重み付き最小二乗（WLS）ソルバーを使用して計算されます。このソルバーには、各エポックの状態として、携帯電話の位置（x、y、z）、クロックバイアス（t）、および各固有信号タイプのisrbMが設定されています。
+
+collectionName - "grand "の親フォルダの名前です。
+
+phoneName - 親フォルダの名前。
+
+millisSinceGpsEpoch - GPSエポック(1980/1/6 midnight UTC)からのミリ秒単位の整数。
+
+constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvで提供されるマッピング文字列値を持つ整数値。
+
+svid - 衛星ID。
+
+signalType - GNSS信号タイプは、コンステレーション名と周波数帯の組み合わせです。スマートフォンで測定される一般的な信号タイプは以下の通りです。GPS_L1、GPS_L5、GAL_E1、GAL_E5A、GLO_G1、BDS_B1I、BDS_B1C、BDS_B2A、QZS_J1、QZS_J5。
+
+receivedSvTimeInGpsNanos - チップセットが受信した信号の送信時間で、GPSエポック以降のナノ秒数で表します。ReceivedSvTimeNanosから変換すると、この派生値はすべての星座で統一された時間スケールになりますが、ReceivedSvTimeNanosはGLONASSでは一日の時間、GLONASS以外の星座では週の時間を参照します。
+
+[x/y/z]SatPosM - ttx = receivedSvTimeInGpsNanos - satClkBiasNanos (以下に定義)で定義される "真の信号送信時間 "の最良の推定値におけるECEF座標フレーム内の衛星位置(メートル)。これらは、衛星放送のエフェメリスを用いて計算され、真の衛星位置に対して約1mの誤差があります。
+
+[x/y/z]SatVelMps - 信号送信時刻(receivedSvTimeInGpsNanos)におけるECEF座標フレーム内の衛星速度(meters per second)。これらは、衛星放送のエフェメリスを用いて、このアルゴリズムで計算されます。
+
+satClkBiasM - 信号送信時刻(receivedSvTimeInGpsNanos)におけるハードウェア遅延を組み合わせた衛星時刻補正(メートル単位)。その時間に相当するものがsatClkBiasNanosと呼ばれています。
+
+satClkBiasNanosは、satelliteTimeCorrectionからsatelliteHardwareを差し引いた値に相当します。 
