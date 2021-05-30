@@ -97,7 +97,7 @@ constellationType。GNSSコンステレーションタイプ。constellation_typ
 ### 20200530
 - join(ころんびあさんのツイートを見て初心者でもいけるって書いてあったから)
 - data download
-- ディスカッション読んだ
+- ピン留めされてるディスカッション読んだ
   - [外部データセット](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/238579)
   - [ベースラインの位置推定の方法](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/238583)(いつか役に立ちそう)
     - ベースライン推定値の平滑化。これには基本的にドメインの知識は必要ありません。
