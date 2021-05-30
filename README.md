@@ -91,10 +91,12 @@ satClkBiasM - 信号送信時刻(receivedSvTimeInGpsNanos)におけるハード�
 
 satClkBiasNanosは、satelliteTimeCorrectionからsatelliteHardwareを差し引いた値に相当します。
 
+constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvで提供されるマッピング文字列値を持つ整数値。
 
 # log
 ### 20200530
 - join(ころんびあさんのツイートを見て初心者でもいけるって書いてあったから)
 - data download
-
-constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvで提供されるマッピング文字列値を持つ整数値。
+- ディスカッション読んだ
+  - [外部データセット](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/238579)
+  - [ベースラインの位置推定の方法](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/238583)(いつか役に立ちそう)
