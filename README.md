@@ -94,7 +94,7 @@ satClkBiasNanosは、satelliteTimeCorrectionからsatelliteHardwareを差し引�
 constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvで提供されるマッピング文字列値を持つ整数値。
 
 # log
-### 20200530
+### 20210530
 - 最後まで走り切ろう。titanicの壁を越えたい
 - join(ころんびあさんのツイートに初心者でもいけるって書いてあったから)
 - data download
@@ -112,3 +112,7 @@ constellationType。GNSSコンステレーションタイプ。constellation_typ
     - [簡単な説明](https://www.kurabo.co.jp/el/room/3d/page1.html)
   - GNSS : GNSS(global navigation satellite system)は、衛星測位システムの総称で、複数の測位衛星から時刻情報つきの信号を受信し、地上での現在位置を計測するシステムです。 GPS(global positioning system)はアメリカ合衆国が開発したシステムであり、GNSSの1つです。
 
+### 20210531
+- data理解
+  - [このディスカッション](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/241039)読んだ。とりあえず
+最初はcsvファイルだけ。他のファイルはGNSSの説明書いてあるから、コンペ
