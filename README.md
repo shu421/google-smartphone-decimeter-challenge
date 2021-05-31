@@ -116,5 +116,6 @@ phone,millisSinceGpsEpoch,latDeg,lngDeg
 - data理解
   - [このディスカッション](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/241039)読んだ。とりあえず
 最初はcsvファイルだけ。他のファイルはGNSSの説明書いてあるから、コンペ中盤以降読む。
+  - [Let's visualize dataset to understand! 🚙三](https://www.kaggle.com/nayuts/let-s-visualize-dataset-to-understand)読んだけど、importでエラー出た。localはあかん。kaggle kernelならできるから、EDAは基本ここやな
 - [public1位のnotebook](https://www.kaggle.com/dehokanta/baseline-post-processing-by-outlier-correction)でカルマンフィルタが使われている
   - [カルマンフィルタ](https://qiita.com/IshitaTakeshi/items/740ac7e9b549eee4cc04)
