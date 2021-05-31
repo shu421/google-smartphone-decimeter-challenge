@@ -115,4 +115,7 @@ constellationType。GNSSコンステレーションタイプ。constellation_typ
 ### 20210531
 - data理解
   - [このディスカッション](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/241039)読んだ。とりあえず
-最初はcsvファイルだけ。他のファイルはGNSSの説明書いてあるから、コンペ
+最初はcsvファイルだけ。他のファイルはGNSSの説明書いてあるから、コンペ中盤以降読む。
+- [public1位のnotebook](https://www.kaggle.com/dehokanta/baseline-post-processing-by-outlier-correction)でカルマンフィルタが使われている
+  - [カルマンフィルタ](https://qiita.com/IshitaTakeshi/items/740ac7e9b549eee4cc04)
+  - [カルマンフィルタ]
