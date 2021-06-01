@@ -121,5 +121,9 @@ phone,millisSinceGpsEpoch,latDeg,lngDeg
   - [カルマンフィルタ](https://qiita.com/IshitaTakeshi/items/740ac7e9b549eee4cc04)
 
 ### 20210601
- - [Let's visualize dataset to understand! 🚙三](https://www.kaggle.com/nayuts/let-s-visualize-dataset-to-understand)に車がどのように進んだかのGIFが貼ってあった。同じ道を通ることもある。何か使えるかも
+- [Let's visualize dataset to understand! 🚙三](https://www.kaggle.com/nayuts/let-s-visualize-dataset-to-understand)
+  - 車が動くGIF
+    - 同じ道を通ることがある
+    - 曲がり道で一時停止している(信号、曲がり角は減速するとか)
+  - rollDegs面白い。スマホの向きがわかれば、次に行く方向わかる。2021/5月以降しか記録されていない。
   
