@@ -189,3 +189,8 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
   - rollDegs面白い。スマホの向きがわかれば、次に行く方向わかる。2021/5月以降しか記録されていない。
 - ベースラインそのまま出した。lb7.187、232位。ここから頑張ろう。
 - kalman filter と keras良さげ？
+
+### 20210602
+- nb01
+  - [Demonstration of the Kalman filter](https://www.kaggle.com/emaerthin/demonstration-of-the-kalman-filter)そのまま
+  - カルマンフィルターの引数が全くわからん
