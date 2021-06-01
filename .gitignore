@@ -132,3 +132,5 @@ bin/
 etc/
 pyvenv.cfg
 share/
+
+.DS_Store
