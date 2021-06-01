@@ -119,3 +119,7 @@ phone,millisSinceGpsEpoch,latDeg,lngDeg
   - [Let's visualize dataset to understand! 🚙三](https://www.kaggle.com/nayuts/let-s-visualize-dataset-to-understand)読んだけど、importでエラー出た。localはあかん。kaggle kernelならできるから、EDAは基本ここやな
 - [public1位のnotebook](https://www.kaggle.com/dehokanta/baseline-post-processing-by-outlier-correction)でカルマンフィルタが使われている
   - [カルマンフィルタ](https://qiita.com/IshitaTakeshi/items/740ac7e9b549eee4cc04)
+
+### 20210601
+ - [Let's visualize dataset to understand! 🚙三](https://www.kaggle.com/nayuts/let-s-visualize-dataset-to-understand)に車がどのように進んだかのGIFが貼ってあった。同じ道を通ることもある。何か使えるかも
+  
