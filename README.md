@@ -14,6 +14,8 @@ Android GPSチームが主催するこのコンテストは、ION GNSS+ 2021 Con
 
 成功すれば、より正確な位置情報を得ることができ、より細かい人間の行動の地理空間情報と、より細かい粒度のモバイルインターネットとの橋渡しをすることができます。モバイルユーザーは、より良い車線レベルの座標を得て、ロケーションベースのゲームの経験を強化し、交通安全上の問題の位置をより具体的に把握することができます。さらには、行きたい場所に簡単に行けるようになったことに気づくかもしれません。
 
+
+
 # Evaluation
 提出されたデータは、50パーセンタイルと95パーセンタイルの距離誤差の平均値で採点されます。すべての電話機のすべての millisSinceGpsEpoch において、予測された緯度/経度とグランドトゥルースの緯度/経度との間の水平方向の距離（メートル）が計算されます。これらの距離誤差は分布を形成し、そこから50パーセンタイル誤差と95パーセンタイル誤差が計算されます（つまり、95パーセンタイル誤差は、距離誤差の95%が小さくなる値（メートル単位）です）。次に、50パーセンタイルと95パーセンタイルの誤差を各電話機ごとに平均化します。最後に，これらの平均化された値の平均値が，テストセットのすべての電話機について計算される．
 
@@ -25,6 +27,8 @@ phone,millisSinceGpsEpoch,latDeg,lngDeg
 2020-05-15-US-MTV-1_Pixel4,1273608786432,53.599227001298125,-2.4339795741464334
 2020-05-15-US-MTV-1_Pixel4,1273608787432,53.599227001298125,-2.4339795741464334    
 
+
+
 # Data Description
 このチャレンジでは、GPS衛星からの信号、加速度計の測定値、ジャイロスコープの測定値など、携帯電話の位置を決定するのに役立つさまざまな機器からのデータを提供します。
 
@@ -34,64 +38,121 @@ phone,millisSinceGpsEpoch,latDeg,lngDeg
 
 - ファイル名
 [train]/[drive_id]/[phone_name]/ground_truth.csv - トレーニングセットでのみ提供されます。予想されるタイムスタンプでの参照場所。
-
-
 - train/test]/[drive_id]/[phone_name]/supplemental/[phone_name][.20o/.21o/.nmea] - GPSコミュニティで使用されている他のフォーマットのgnssログと同等のデータ。
-
-
 - baseline_locations_[train/test].csv - 簡単な方法で生成された推定座標です。
-
-
 - ground_truth.csv - 予想されるタイムスタンプでの基準となる位置。
-
 - millisSinceGpsEpoch - GPSエポック(1980/1/6 midnight UTC)からのミリ秒単位の整数値。その値は次のようになります
-
 - round(Raw::TimeNanos - Raw::FullBiasNanos / 1000000.0)
-
 となります。この値は、Raw文に記述された各エポックごとに
-
 - latDeg, lngDeg - 基準となるGNSS受信機（NovAtel SPAN）で推定されたWGS84の緯度、経度（10進法）。位置を非整数のタイムスタンプに合わせるために、必要に応じて線形補間が適用されています。
-
 - heightAboveWgs84EllipsoidM - 基準となるGNSS受信機によって推定されたWGS84楕円体からの高さ（単位：メートル）です。
-
 - timeSinceFirstFixSeconds - 最初の位置修正からの経過時間（秒）。
-
 - hDop - Horizontal dilution of precision DOP（GGA文中のDOPの水平方向の希釈）で、測定値の誤差が最終的な水平方向の位置推定にどのように影響するかを表しています。
-
 - vDop - 精密DOPの垂直方向の希釈（GSA文より）、測定値の誤差が最終的な垂直方向の位置推定にどのように影響するかを説明しています。
-
 - speedMps - 地上での速度をメートル毎秒で表したものです。
-
 - courseDegree - 地上での真北を基準とした時計回りのコース角度（単位：度）です。
 
+[train/test]/[drive_id]/[phone_name]/[phone_name]_derived.csv - 生のGNSS測定値から派生したGNSS中間値で、利便性のために提供されています。
 
-- [train/test]/[drive_id]/[phone_name]/[phone_name]_derived.csv - 生のGNSS測定値から派生したGNSS中間値で、便宜的に提供されています。
-
-これらの派生値を使用して、補正された疑似距離（電話機から衛星までの幾何学的な距離の近似値）を次のように計算できます： correctedPrM = rawPrM + satClkBiasM - isrbM - ionoDelayM - tropoDelayM。ベースラインの位置は、補正されたPrMと衛星の位置を用いて、標準的な重み付き最小二乗（WLS）ソルバーを使用して計算されます。このソルバーには、各エポックの状態として、携帯電話の位置（x、y、z）、クロックバイアス（t）、および各固有信号タイプのisrbMが設定されています。
-
+これらの派生値を使用して、補正された疑似距離（電話機から衛星までの幾何学的な距離の近似値）を次のように計算できます： correctedPrM = rawPrM + satClkBiasM - isrbM - ionoDelayM - tropoDelayM。ベースラインの位置は、補正されたPrMと衛星の位置を使用して、標準的な重み付き最小二乗（WLS）ソルバーを用いて計算されます。このソルバーには、各エポックの状態として、携帯電話の位置（x、y、z）、クロックバイアス（t）、各固有信号タイプのisrbMが設定されています。
 - collectionName - "grand "の親フォルダの名前です。
-
 - phoneName - 親フォルダの名前。
-
 - millisSinceGpsEpoch - GPSエポック(1980/1/6 midnight UTC)からのミリ秒単位の整数。
-
-- constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvで提供されるマッピング文字列値を持つ整数値。
-
+- constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvにマッピング文字列の値が記載されている整数値です。
 - svid - 衛星ID。
-
 - signalType - GNSS信号タイプは、コンステレーション名と周波数帯の組み合わせです。スマートフォンで測定される一般的な信号タイプは以下の通りです。GPS_L1、GPS_L5、GAL_E1、GAL_E5A、GLO_G1、BDS_B1I、BDS_B1C、BDS_B2A、QZS_J1、QZS_J5。
-
 - receivedSvTimeInGpsNanos - チップセットが受信した信号の送信時間で、GPSエポック以降のナノ秒数で表します。ReceivedSvTimeNanosから変換すると、この派生値はすべての星座で統一された時間スケールになりますが、ReceivedSvTimeNanosはGLONASSでは一日の時間、GLONASS以外の星座では週の時間を参照します。
-
 - [x/y/z]SatPosM - ttx = receivedSvTimeInGpsNanos - satClkBiasNanos (以下に定義)で定義される "真の信号送信時間 "の最良の推定値におけるECEF座標フレーム内の衛星位置(メートル)。これらは、衛星放送のエフェメリスを用いて計算され、真の衛星位置に対して約1mの誤差があります。
-
 - [x/y/z]SatVelMps - 信号送信時刻(receivedSvTimeInGpsNanos)におけるECEF座標フレーム内の衛星速度(meters per second)。これらは、衛星放送のエフェメリスを用いて、このアルゴリズムで計算されます。
-
 - satClkBiasM - 信号送信時刻(receivedSvTimeInGpsNanos)におけるハードウェア遅延を組み合わせた衛星時刻補正(メートル単位)。その時間に相当するものがsatClkBiasNanosと呼ばれています。
+satClkBiasNanosは、satelliteTimeCorrectionからsatelliteHardwareDelayを差し引いた値に相当します。
+IS-GPS-200H の 20.3.3.3.1 節で定義されているように、satelliteTimeCorrection は∆tsv = af0 + af1(t - toc) + af2(t - toc)2 + ∆tr から計算され、satelliteHardwareDelay は 20.3.3.3.2 節で定義されている用語です。
+上記の式のパラメータは、衛星放送のエフェメリスに記載されています。
+- satClkDriftMps - 信号送信時刻（receivedSvTimeInGpsNanos）における衛星クロックのドリフト（meter per second）。これは、t+0.5sとt-0.5sにおける衛星クロックのバイアスの差に相当します。
+- rawPrM - メートル単位の生の疑似距離。これは、光速と、信号送信時刻(receivedSvTimeInGpsNanos)から信号到着時刻(Raw::TimeNanos - Raw::FullBiasNanos - Raw::BiasNanos)までの時間差の積である。
+- rawPrUncM - メートル単位の生の疑似レンジの不確かさ。これは、光の速度とReceivedSvTimeUncertaintyNanosの積です。
+- isrbM - 非GPS-L1信号からGPS-L1信号への信号間距離バイアス（ISRB）をメートル単位で表したもの。例えば、GPS L5のisrbMが1000mの場合、GPS L5の疑似レンジは、同じGPS衛星が送信するGPS L1の疑似レンジよりも1000m長いことを意味します。GPS-L1信号ではゼロです。ISRBは、GPSチップセット・レベルで導入され、重み付けされた最小二乗エンジンの状態として推定されます。
+- ionoDelayM - Klobucharモデルで推定された電離層遅延（メートル単位）。
+- tropoDelayM - Nigel Penna, Alan Dodson and W. Chen (2001)によるEGNOSモデルを用いて推定された対流圏遅延時間（メートル単位）。 
 
-- satClkBiasNanosは、satelliteTimeCorrectionからsatelliteHardwareを差し引いた値に相当します。
+[train/test]/[drive_id]/[phone_name]/[phone_name]_GnssLog.txt - GnssLoggerアプリによって生成された携帯電話のログです。このノートブックでは、ログを解析する方法を説明します。各 gnss ファイルにはいくつかのサブデータセットが含まれており、それぞれの詳細は以下のとおりです。
 
-- constellationType。GNSSコンステレーションタイプ。constellation_type_mapping.csvで提供されるマッピング文字列値を持つ整数値。
+
+Raw - Android API GnssMeasurementから収集された、1つのGNSS信号 (L5対応のスマートフォンでは、各衛星に1～2つの信号がある場合があります) の生のGNSS測定値。
+- utcTimeMillis - UTCエポック(1970/1/1)からのミリ秒で、GnssClockから変換されたものです。
+- TimeNanos - ナノ秒単位のGNSS受信機の内部ハードウェアクロック値。
+- LeapSecond - クロックの時間に関連付けられている閏秒です。
+- TimeUncertaintyNanos - クロックの時間の不確実性 (1シグマ) をナノ秒で表したものです。
+- FullBiasNanos - GPS受信機内部のハードウェアクロックgetTimeNanos()と1980年1月6日0000Z以降の真のGPS時間との差をナノ秒単位で表したものです。
+- BiasNanos - クロックのサブナノ秒のバイアスです。
+- BiasUncertaintyNanos - 時計のバイアスの不確かさ（1シグマ）をナノ秒単位で表したものです。
+- DriftNanosPerSecond - 時計のドリフトを1秒あたりのナノ秒で表したもの。
+- DriftUncertaintyNanosPerSecond - 1秒あたりのクロックのドリフトの不確かさ(1シグマ)をナノ秒で表したものです。
+- HardwareClockDiscontinuityCount - ハードウェアクロックの不連続性のカウント。
+- Svid - 衛星IDです。詳細はこちらをご覧ください。
+- TimeOffsetNanos - 測定が行われた際のタイムオフセットをナノ秒単位で表したもの。
+- State - 衛星の同期状態を示す整数。整数の各ビットは、測定の特定の状態情報を表す。ビットと状態の間のマッピングについては、metadata/raw_state_bit_map.jsonファイルを参照してください。
+- ReceivedSvTimeNanos - 測定時刻における、受信したGNSS衛星の時刻をナノ秒単位で表したものです。
+- ReceivedSvTimeUncertaintyNanos - 受信したGNSS時間の誤差推定値（1シグマ）をナノ秒単位で表したものです。
+- Cn0DbHz - 搬送波対雑音比をdB-Hzで表したもの。
+- PseudorangeRateMetersPerSecond - タイムスタンプでの疑似レンジレートをm/sで表したもの。
+- PseudorangeRateUncertaintyMetersPerSecond - 擬似レンジのレートの不確かさ（1シグマ）をm/sで表したもの。
+- AccumulatedDeltaRangeState - これは、「Accumulated Delta Range」測定の状態を示します。整数の各ビットは、測定の状態を表しています。ビットと状態の間のマッピングについては、metadata/accumulated_delta_range_state_bit_map.jsonファイルを参照してください。
+- AccumulatedDeltaRangeMeters - 最後のチャンネルリセット以降の累積デルタレンジ、単位はメートルです。
+- AccumulatedDeltaRangeUncertaintyMeters - 累積されたデルタレンジの不確かさ(1シグマ)をメートル単位で表したものです。
+- CarrierFrequencyHz - トラッキングされた信号のキャリア周波数です。
+- CarrierCycles - 衛星と受信機の間の完全なキャリアサイクルの数です。これらのデータセットではNullです。
+- CarrierPhase - 受信機で検出されたRF位相です。これらのデータセットではNullです。
+- CarrierPhaseUncertainty - 搬送波位相の不確かさ(1シグマ)です。これらのデータセットではNullです。
+- MultipathIndicator - イベントの「マルチパス」状態を示す値です。
+- SnrInDb - (相関と統合後の)信号対雑音比(SNR)をdBで表したもの。
+- ConstellationType - GNSSコンステレーションタイプ。整数値で、文字列値へのマッピングはconstellation_type_mapping.csvファイルで提供されています。
+- AgcDb - 自動利得制御レベル（単位：dB）です。
+- BasebandCn0DbHz - ベースバンドのCarrier-to-Noise密度をdB-Hzで表した値。Android 11でのみ利用可能です。
+- FullInterSignalBiasNanos - GNSS測定の信号間バイアスをナノ秒単位で表したもので、サブナノ秒の精度を持ちます。2021年にPixel 5 logsでのみ利用可能。Android 11でのみ利用可能です。
+- FullInterSignalBiasUncertaintyNanos - GNSS測定の信号間バイアスの不確かさ（1シグマ）をナノ秒単位で、サブナノ秒の精度で表したもの。Android 11でのみ利用可能です。
+- SatelliteInterSignalBiasNanos - GNSS測定の衛星信号間バイアスをナノ秒単位で表したもので、サブナノ秒の精度で表示されます。Android 11でのみ利用可能です。
+- SatelliteInterSignalBiasUncertaintyNanos - GNSS測定の衛星信号間バイアスの不確かさ（1シグマ）をナノ秒単位で表したもので、サブナノ秒の精度を持ちます。Android 11でのみ利用可能です。
+- CodeType - GNSS測定のコードタイプ。最近のログでのみ利用可能です。
+- ChipsetElapsedRealtimeNanos - システム起動時からのこのクロックの経過したリアルタイムをナノ秒単位で表したものです。最近のログでのみ利用可能です。
+
+Status - Android API GnssStatusから収集されたGNSS信号のステータスです。
+- UnixTimeMillis - UTCエポック(1970/1/1)からのミリ秒で、GPSプロバイダが最後に変更した場所から報告されます。
+- SignalCount - 衛星リスト内の衛星の合計数。
+- SignalIndex - 現在の信号のインデックスです。
+- ConstellationType。指定されたインデックスの衛星のコンステレーションタイプ。
+- Svid：衛星のIDです。
+- CarrierFrequencyHz Cn0DbHz：追跡している信号の搬送波周波数
+- Cn0DbHz。Cn0DbHz：指定されたインデックスの衛星のアンテナにおけるcarrier-to-noise densityをdB-Hzで表したもの。
+- AzimuthDegrees 指定されたインデックスにおける衛星の方位を示す。
+- ElevationDegrees：指定インデックスにおける衛星の仰角 ElevationDegrees：指定されたインデックスにおける衛星の仰角。
+- UsedInFix: 指定されたインデックスの衛星が、最新の位置修正の計算に使用されたかどうか。
+- HasAlmanacData。指定されたインデックスの衛星がアルマナックデータを持っているかどうか。
+- HasEphemerisData: 指定されたインデックスの衛星がエフェメリスデータを持っているかどうか。
+- BasebandCn0DbHz。BasebandCn0DbHz：指定されたインデックスの衛星のベースバンド搬送波ノイズ密度をdB-Hzで表したもの。
+- UncalAccel - Android APIのSensor#TYPE_ACCELEROMETER_UNCALIBRATEDから収集された、校正されていない加速度計からの読み取り値。
+- utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP (Network Time Protocol)同期後のUTCでの推定デバイス起動時間の合計です。
+- elapsedRealtimeNanos。イベントが発生した時間をナノ秒単位で表したもの。
+- UncalAccel[X/Y/Z]Mps2 - [x/y/z]_uncalib（バイアス補正なし）です。
+- Bias[X/Y/Z]Mps2 - 推定された[x/y/z]_biasです。以前の日付で収集されたデータセットではNullとなります。
+- UncalGyro - Android APIのSensor#TYPE_GYROSCOPE_UNCALIBRATEDから収集された、キャリブレーションされていないジャイロスコープからの読み取り値
+- utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP（Network Time Protocol）同期後のUTCでの推定デバイス起動時間の合計です。
+- elapsedRealtimeNanos。イベントが発生した時間をナノ秒単位で表したもの。
+- UncalGyro[X/Y/Z]RadPerSec - [X/Y/Z]軸周りの角速度（ドリフト補正なし）をrad/sで表したものです。
+- Drift[X/Y/Z]RadPerSec - [X/Y/Z]軸周りの推定ドリフト量をrad/sで表したものです。以前の日付で収集されたデータセットでは無効です。
+- UncalMag - Android APIのSensor#STRING_TYPE_MAGNETIC_FIELD_UNCALIBRATEDから収集された、校正されていない磁力計からの読み取り値です。
+- utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP（Network Time Protocol）同期後のUTCでの推定デバイス起動時間の合計。
+- elapsedRealtimeNanos。イベントが発生した時間をナノ秒単位で表したもの。
+- UncalMag[X/Y/Z]MicroT - [x/y/z]_uncalib（バイアス補正なし）。
+- Bias[X/Y/Z]MicroT - 推定された[x/y/z]_biasです。以前の日付で収集されたデータセットではNullです。
+- OrientationDeg - 各行は、Android APIのSensorManager#getOrientationから収集された、デバイスの推定方位を表します。このメッセージは、2021年3月以降に収集されたログでのみ利用可能です。
+- utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP（Network Time Protocol）同期後のUTCでの推定デバイス起動時間の合計です。
+- elapsedRealtimeNanos - イベントが発生した時のナノ秒単位の時間です。
+- yawDeg - 画面がポートレートモードの場合、この値はアジマス度（0°～360°のモジュラス）に相当します。画面がランドスケープモードの場合は、画面の回転角度（90°または270°）と方位角の和（0°〜360°へのモジュラス）に相当します。方位角とは、-z軸を中心とした回転角度のことです。この値は、デバイスのy軸と磁北極の間の角度を表します。
+- rollDeg - Roll、y軸を中心とした回転の角度を指す。この値は、デバイスの画面に垂直な平面と、地面に垂直な平面との間の角度を表します。
+- pitchDeg - ピッチ、x軸を中心とした回転の角度。この値は、デバイスの画面に平行な平面と、地面に平行な平面との間の角度を表します。
+
+
 
 # log
 ### 20210530
