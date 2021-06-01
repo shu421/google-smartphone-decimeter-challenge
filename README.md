@@ -187,10 +187,11 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
     - 同じ道を通ることがある
     - 曲がり道で一時停止している(信号、曲がり角は減速するとか)
   - rollDegs面白い。スマホの向きがわかれば、次に行く方向わかる。2021/5月以降しか記録されていない。
-- ベースラインそのまま出した。lb7.187、232位。ここから頑張ろう。
+- nb01: ベースラインそのまま出した。lb7.187、232位。ここから頑張ろう。
 - kalman filter と keras良さげ？
 
 ### 20210602
-- nb01
+- nb02
+  - cv: 3.391, lb: 6.217
   - [Demonstration of the Kalman filter](https://www.kaggle.com/emaerthin/demonstration-of-the-kalman-filter)そのまま
   - カルマンフィルターの引数が全くわからん
