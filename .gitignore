@@ -134,3 +134,6 @@ pyvenv.cfg
 share/
 
 .DS_Store
+
+input
+output
