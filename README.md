@@ -195,3 +195,18 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
   - cv: 3.391, lb: 6.217
   - [Demonstration of the Kalman filter](https://www.kaggle.com/emaerthin/demonstration-of-the-kalman-filter)そのまま
   - カルマンフィルターの引数が全くわからん
+
+### 20210603
+- インターンと課題やってたという言い訳。朝9時過ぎに起きたのが悪い
+
+### 20210604(1時間)
+- nb003
+  - [ベイズ最適化による、カルマンフィルターのパラメータチューニング](https://www.kaggle.com/tqa236/kalman-filter-hyperparameter-search-with-bo)
+- EKF(拡張カルマンフィルター)使えるかも？[Demonstration of the Kalman filter](https://www.kaggle.com/emaerthin/demonstration-of-the-kalman-filter)のコメントに書いてあった
+- [WGS84座標からxyz直交座標への変換](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/241453)
+- WGS84は、米国が構築・維持している世界測地系であり、GPSの軌道情報で使われているほか、GPSによるナビゲーションの位置表示の基準として使われています。
+
+- nnb005 : [phone mean prediction](https://www.kaggle.com/t88take/gsdc-phones-mean-prediction)
+- nb006[Qiita](https://qiita.com/r-fuji/items/99ca549b963cedc106ab)
+    - 二点間の距離の算出 : Vincenty法の方がhaversine法よりも精度良いか？[ソース](https://qiita.com/7of9/items/4ea7356a8806eaa08d5e#comment-8b584fc3d15249477719)
+- 車が曲がり角で遅くなる : 遅くなった時は誤差小さく、速く動いている時は誤差を大きめにとると良いかも
