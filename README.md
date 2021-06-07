@@ -219,9 +219,9 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
 - nb004 reject outlier[Baseline post-processing by outlier correction](https://www.kaggle.com/dehokanta/baseline-post-processing-by-outlier-correction)
   - base_trainとground_truthの距離の差が大きいものがある。
   - test野中にはgtが入っていないので、lat,lonを前後にshiftすることで、次の時点との距離を算出。大きいものはあるが、これは外れ値か直線上でスピードを出したのだと推測できるので、前後の位置の1/2を現在地と修正する。大きいか否かは、95%信頼区間である、std*2で判断
-
 - nb008
   - nb004では外れ値を削除してた。nb008では前後の距離の1/2をとったけど、スコア改善にはならなかった。cvとlbの相関は取れてそう。
+- 位置のdiff出したい。外れ値と、直線上の動き判断できそう
 
 ### 20210606
 - 用事が結構入ってた。すみません。
