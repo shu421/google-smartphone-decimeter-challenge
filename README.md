@@ -222,3 +222,12 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
 
 - nb008
   - nb004では外れ値を削除してた。nb008では前後の距離の1/2をとったけど、スコア改善にはならなかった。cvとlbの相関は取れてそう。
+
+### 20210606
+- 用事が結構入ってた。すみません。
+
+### 20210607
+- [何かの最適化](https://www.kaggle.com/foreveryoung/least-squares-solution-from-gnss-derived-data)
+  - 衛星とのレシーバーの距離誤差を最小化したい。
+    - `correctedPrM = rawPrM + satClkBiasM - isrbM - ionoDelayM - tropoDelayM`
+    - 擬似範囲 = 実際の距離 + ユーザーのクロックバイアス + 実際のユーザーの位置
