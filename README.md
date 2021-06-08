@@ -231,3 +231,7 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
   - 衛星とのレシーバーの距離誤差を最小化したい。
     - `correctedPrM = rawPrM + satClkBiasM - isrbM - ionoDelayM - tropoDelayM`
     - 擬似範囲 = 実際の距離 + ユーザーのクロックバイアス + 実際のユーザーの位置
+
+### 20210608
+- [nb010](https://www.kaggle.com/foreveryoung/least-squares-solution-from-gnss-derived-data)
+  - 擬似距離 = (受信機でその信号が衛星から受信機に届くまでの時間遅れ)×(伝播速さ(＝光速))
