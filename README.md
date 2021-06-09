@@ -235,3 +235,13 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
 ### 20210608
 - [nb010](https://www.kaggle.com/foreveryoung/least-squares-solution-from-gnss-derived-data)
   - 擬似距離 = (受信機でその信号が衛星から受信機に届くまでの時間遅れ)×(伝播速さ(＝光速))
+
+### 20210609
+- 0からデータとか評価を見直した
+  - nb011
+    - [Baseline from host data](https://www.kaggle.com/jpmiller/baseline-from-host-data)わかりやすい。
+    - 自分たちはtest_baseを予測する
+    - 評価はtest
+  - nb012
+    - [simdkalman公式](https://simdkalman.readthedocs.io/en/latest/)
+    - 次回kalmanフィルターの使い方から
