@@ -245,3 +245,16 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
   - nb012
     - [simdkalman公式](https://simdkalman.readthedocs.io/en/latest/)
     - 次回kalmanフィルターの使い方から
+
+### 20210610
+- カルマンフィルターの使い方
+  - base_train, gtでをsmoothし、そのkfでノイズが混じったtestの位置を平滑化
+  - 特徴量からターゲットを予測するわけではない
+  - 時点1から時点tまでの観測データy1:ty1:tを元に、ある時点の状態xt′xt′を推定します。つまり、p(xt′|y1:t)p(xt′|y1:t)を求めます。より正確には、観測データが手元にあるときの時点tの状態xtxt確率分布p(xt′|y1:t)p(xt′|y1:t)を求め、その平均や分散を求めます。[参考](https://qiita.com/hanon/items/7f03621414c59f06d7ca)
+- nb004
+  - 閾値は50が良いみたい
+- [ころんびあさんのディスカッション](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/244752)
+  - T88さん: predicts speed-related metrics for post-processing.
+This method has worked well
+  - post-processingがかなり効くみたい
+  - 次回post-processingのcode読む！！
