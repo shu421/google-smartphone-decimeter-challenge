@@ -258,3 +258,8 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
 This method has worked well
   - post-processingがかなり効くみたい
   - 次回post-processingのcode読む！！
+
+### 20210611
+- [ころんびあさんのディスカッション](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/244752)
+  - みんなベースラインのデータ使っているみたい。IMUデータ使ったらベースライン超えられそうだけど結合させるのめんどくさいし、うまくいかないみたい。いつか使えそう。code待ち
+  - MLではない。post processing使う
