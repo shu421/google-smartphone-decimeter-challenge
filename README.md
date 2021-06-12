@@ -206,17 +206,18 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
 - [WGS84座標からxyz直交座標への変換](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/241453)
 - WGS84は、米国が構築・維持している世界測地系であり、GPSの軌道情報で使われているほか、GPSによるナビゲーションの位置表示の基準として使われています。
 
-- nnb004 : [phone mean prediction](https://www.kaggle.com/t88take/gsdc-phones-mean-prediction)
 - nb005[Qiita](https://qiita.com/r-fuji/items/99ca549b963cedc106ab)
     - 二点間の距離の算出 : Vincenty法の方がhaversine法よりも精度良いか？[ソース](https://qiita.com/7of9/items/4ea7356a8806eaa08d5e#comment-8b584fc3d15249477719)
 - 車が曲がり角で遅くなる : 遅くなった時は誤差小さく、速く動いている時は誤差を大きめにとると良いかも
+
+- nnb005 : [phone mean prediction](https://www.kaggle.com/t88take/gsdc-phones-mean-prediction)
 
 ### 20210605
 - vencityあんまよくないらしい。geopyでKarney法。[ソース](https://h-memo.com/python-geopy-distance/)
 - nb007
   - 今までやってたの、get_train_scoreだった。まじで意味ない。何がしたいかちゃんと考えよう
 
-- nb004 reject outlier[Baseline post-processing by outlier correction](https://www.kaggle.com/dehokanta/baseline-post-processing-by-outlier-correction)
+- nb??? reject outlier[Baseline post-processing by outlier correction](https://www.kaggle.com/dehokanta/baseline-post-processing-by-outlier-correction)
   - base_trainとground_truthの距離の差が大きいものがある。
   - test野中にはgtが入っていないので、lat,lonを前後にshiftすることで、次の時点との距離を算出。大きいものはあるが、これは外れ値か直線上でスピードを出したのだと推測できるので、前後の位置の1/2を現在地と修正する。大きいか否かは、95%信頼区間である、std*2で判断
 - nb008
@@ -263,3 +264,14 @@ This method has worked well
 - [ころんびあさんのディスカッション](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/244752)
   - みんなベースラインのデータ使っているみたい。IMUデータ使ったらベースライン超えられそうだけど結合させるのめんどくさいし、うまくいかないみたい。いつか使えそう。code待ち
   - MLではない。post processing使う
+
+### 20210612
+- nb015
+  - nb014ではphone_mean_predをした後にremove_deviceしている
+  - 今回は逆にしてみた
+  - lb悪化
+- nb016
+  - subファイルをpandasで読み込んでからremove_deviceした
+  - lb改善: 5.639 → 5.596
+- [GSDC blend](https://www.kaggle.com/rtombs/gsdc-blend)
+  - 公開notebookの中で一番強い。lb: 5.558
