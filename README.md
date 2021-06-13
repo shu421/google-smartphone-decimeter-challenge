@@ -303,3 +303,6 @@ This method has worked well
 - nb019
   - [GSDC EDA : Error when stopping](https://www.kaggle.com/t88take/gsdc-eda-error-when-stopping)
   - 止まった時の誤差が気になる。gtに比べてかなり散らばっている。他は直線、曲がり角かかわらず割と良い線行ってる
+- 走行した地理条件によって、精度変わるか？
+  - ただ、同じコレクションでも精度違った
+  - コレクションを横断して、phoneの精度と、地理条件を考えるべき
