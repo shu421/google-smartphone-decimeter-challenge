@@ -275,3 +275,5 @@ This method has worked well
   - lb改善: 5.639 → 5.596
 - [GSDC blend](https://www.kaggle.com/rtombs/gsdc-blend)
   - 公開notebookの中で一番強い。lb: 5.558
+
+### 20210613
