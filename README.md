@@ -277,3 +277,29 @@ This method has worked well
   - 公開notebookの中で一番強い。lb: 5.558
 
 ### 20210613
+- nb017
+  - [position shift](https://www.kaggle.com/wrrosa/gsdc-position-shift)コピー
+  - ```
+    for fi in ['x','y','z']:
+        d[[fi+'new']] = d[fi+'p'] + d[fi+'diff']*(1-a/d['dist'])
+    ```
+  - シフトさせる次の地点は、現在地と、次の地点(diff)との差を距離でスケーリングしたものを足して算出される
+  - スケーリング係数をoptunaで最適化する
+  - lb: 5.531
+  - post processingの順番
+    1. Reject outlier
+    2. Kalman filter
+    3. Phone mean prediction
+    4. remove device
+    5. Position shift
+- [ころんびあさんディスカッション](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/245221)
+  - 今回のコンペはpost processingの順番によってスコアが変わるらしい
+  - 21345の順番だとスコア下がるらしい
+- nb018
+  - dehokantaさんのやつとphone mean predictionのreject outlierどっちが効くのか検証
+  - cv: 4.58290973646303
+  - nb005のphone mean prediction内のreject outlierではcv: 4.551122113134492だった
+  - 結論: phone mean predictionの方が精度よくなる
+- nb019
+  - [GSDC EDA : Error when stopping](https://www.kaggle.com/t88take/gsdc-eda-error-when-stopping)
+  - 止まった時の誤差が気になる。gtに比べてかなり散らばっている。他は直線、曲がり角かかわらず割と良い線行ってる

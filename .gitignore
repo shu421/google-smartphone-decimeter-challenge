@@ -132,8 +132,12 @@ bin/
 etc/
 pyvenv.cfg
 share/
+include
 
 .DS_Store
 
 input
 output
+
+# CSVfile
+*.csv
