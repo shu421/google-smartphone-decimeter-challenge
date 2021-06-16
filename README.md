@@ -332,3 +332,7 @@ This method has worked well
   - lb悪化: 5.564
 - [Taroさんdiscussion](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/245160)
   - high way、tree-lined street、downtownではGNSSも精度が違う。これごとにrunを変える必要がある
+# 20210617
+- 橋の下だと精度悪くなる？
+<img width="902" alt="スクリーンショット 2021-06-17 8 54 23" src="https://user-images.githubusercontent.com/71954051/122309689-b15a9d00-cf49-11eb-986f-96dc93bd3610.png">
+- nb019とnb020もっと見る
