@@ -272,7 +272,7 @@ This method has worked well
   - lb悪化
 - nb016
   - subファイルをpandasで読み込んでからremove_deviceした
-  - lb改善: 5.639 → 5.596
+  - lb悪化: 5.639 → 5.596
 - [GSDC blend](https://www.kaggle.com/rtombs/gsdc-blend)
   - 公開notebookの中で一番強い。lb: 5.558
 
@@ -307,7 +307,28 @@ This method has worked well
   - ただ、同じコレクションでも精度違った
   - コレクションを横断して、phoneの精度と、地理条件を考えるべき
 
-# 20210614
+### 20210614
 - 授業と課題
 
-# 20210615
+### 20210615
+- plotlyの導入
+
+### 20210616
+- nb019
+  - 減速した時の誤差が大きい
+  - speed=0多い  
+  <img width="363" alt="スクリーンショット 2021-06-16 11 42 04" src="https://user-images.githubusercontent.com/71954051/122149956-e0183b00-ce97-11eb-9967-75f19eb50fee.png">
+  - speedMpsと、次の地点への距離(move dist)のグラフが似ている。座標を元に計算されている？
+    <img width="571" alt="スクリーンショット 2021-06-16 11 41 13" src="https://user-images.githubusercontent.com/71954051/122149892-c1b23f80-ce97-11eb-842d-a1ec6620911c.png">  
+    - gtのspeedMpsとmove dist同じなの当たり前ではないのか？
+    - haighwayはやっぱり精度良い
+- フィルタリングしたtrainのcsvファイルも作った
+  - nb005, nb016, nb017
+- nb020
+  - filteredファイルに対して、nb019と同じEDAをした
+  - しっかりとフィルタリングされていることがわかるから、今後はこれをベースにして案出していく
+- nb017-2
+  - position shift2回目やったら効く気がした
+  - lb悪化: 5.564
+- [Taroさんdiscussion](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/245160)
+  - high way、tree-lined street、downtownではGNSSも精度が違う。これごとにrunを変える必要がある
