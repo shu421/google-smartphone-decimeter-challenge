@@ -141,3 +141,6 @@ output
 
 # CSVfile
 *.csv
+
+# vscode
+.vscode

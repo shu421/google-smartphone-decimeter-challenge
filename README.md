@@ -336,3 +336,6 @@ This method has worked well
 - 橋の下だと精度悪くなる？
 <img width="902" alt="スクリーンショット 2021-06-17 8 54 23" src="https://user-images.githubusercontent.com/71954051/122309689-b15a9d00-cf49-11eb-986f-96dc93bd3610.png">
 - nb019とnb020もっと見る
+
+# 20210618
+- 課題進めた
