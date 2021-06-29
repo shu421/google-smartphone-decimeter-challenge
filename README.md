@@ -412,3 +412,12 @@ This method has worked well
       - phoneNameだけは残す
       - lightgbmは組めた
       - 欠損値をそう補完するかを次回考える
+      - adversal validationが0.5にならん。。。。。。
+- nb028
+  - [baselineを再計算](https://www.kaggle.com/shu421/gsdc-reproducing-baseline-wls-on-one-measurement/)
+
+- sample_subとbase_testのtimestamp全く同じだ笑 前検証した時なんで間違えたんだろう
+- trainのderive,gt,base_trainで共通するtimestampある
+- deriveは一つのtimestampだけ。21行くらい
+- testでは共通するtimestampは限られている
+- deriveにあるtimestampはbaselineの計算できるけど、ないやつはどうするんだろ
