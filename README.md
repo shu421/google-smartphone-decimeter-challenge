@@ -376,3 +376,39 @@ This method has worked well
   - 今までのフローを一つのnotebookにまとめた
   - trainは終了
   - 次回、testデータもやる
+
+# 20210624-20210628
+- 課題、テスト勉強
+
+# 20210629
+- nb024
+  - フロー整理
+- nb025
+  - train, submissionでわかりやすいようにコード整理
+- nb020
+
+<img width="44" alt="スクリーンショット 2021-06-29 14 17 26" src="https://user-images.githubusercontent.com/71954051/123741292-bd990f80-d8e4-11eb-8f6a-8315aed57d9f.png">
+<img width="104" alt="スクリーンショット 2021-06-29 14 19 11" src="https://user-images.githubusercontent.com/71954051/123741410-fa650680-d8e4-11eb-9228-0863d9cb6743.png">
+
+  - 第三四分位数+1.5×四分位範囲を超えたデータを外れ値として除去する
+    - 今回は第三四分位数が2.aであるため、平均が最大値の方へ引っ張られてしまう。そのため、正規分布を仮定して平均値から標準偏差の3倍より大きいものを削除する方法は使えない
+
+  <img width="427" alt="スクリーンショット 2021-06-29 14 15 28" src="https://user-images.githubusercontent.com/71954051/123741160-875b9000-d8e4-11eb-940e-a849be0d4a5b.png">
+
+  - 外れ値(dist_err>thr)の特徴
+    - hDopが高い(gtにしか含まれていない)
+    - speedMps明らかに小さい
+      - スピードが遅い時に多い
+
+      <img width="120" alt="スクリーンショット 2021-06-29 14 51 49" src="https://user-images.githubusercontent.com/71954051/123744306-8a0cb400-d8e9-11eb-95cb-ea77ab13180f.png">
+
+      - outlierの75%が7.67, roの25%が8.51だし、これは落として良いかも。roの8.51以下の数によるけど
+    - dist_prevとdist_nextが210ある。これは落とすべき。
+      - 最初に外れ値は落としたけど、それ以降の処理で追加されてしまった
+    - collectionごとにremove device変えるの良いかも
+    - もしくは機械学習
+      - nb027
+      - phoneは落としたけど、tree,downtownごとにラベルづけしても良いかも
+      - phoneNameだけは残す
+      - lightgbmは組めた
+      - 欠損値をそう補完するかを次回考える
