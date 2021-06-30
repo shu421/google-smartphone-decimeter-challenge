@@ -421,3 +421,6 @@ This method has worked well
 - deriveは一つのtimestampだけ。21行くらい
 - testでは共通するtimestampは限られている
 - deriveにあるtimestampはbaselineの計算できるけど、ないやつはどうするんだろ
+
+# 20210630
+- サボってました、、、明日の午前やる
