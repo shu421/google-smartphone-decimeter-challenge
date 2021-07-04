@@ -424,3 +424,27 @@ This method has worked well
 
 # 20210630
 - サボってました、、、明日の午前やる
+
+# 20210701
+- deriveにあるtimestampのbaseline補間だけやるか、そこからさらにカルマンフィルタでデータの補間するか
+- 補間するには、base_train,train_derived、base_test,test_derivedに共通するtimestampが必要
+  - base_train,train_derived
+    - base_trainに合ってtrain_derivedにないtimestamp = 53442
+    - base_train = 131342
+    - 40.7%欠損
+  - base_test,test_derived
+    - base_testに合ってtest_derivedにないtimestamp = 40943
+    - base_test = 91486
+    - 44%欠損
+  1. 統合されたtrain_derivedを使ってbase_trainの距離推定
+  2. ground_truthとの距離確認
+  3. 改善されていたらtest_derivedを使ってtest_derivedの距離推定
+
+# 20210702-0703
+- groupbyと戦っていた
+
+# 20210704
+- nb033
+  - [Predict Next Point with the IMU data](https://www.kaggle.com/alvinai9603/predict-next-point-with-the-imu-data)
+  - IMU使った、次点の予測
+  - 強すぎる.... lb5.394→5.297
