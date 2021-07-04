@@ -444,7 +444,22 @@ This method has worked well
 - groupbyと戦っていた
 
 # 20210704
-- nb033
+- nb029
+  - nb028をfor文で回した
+  - 17hくらいかかりそうだから、applyとgroupbyの勉強する
+- nb030
+  - nb029のテスト用
+- nb031
+  - applyとgroupbyの勉強
+  - 関数の出力がよくなかった。タブルで出力していたところをリストにしたらapplyすることができた
+  - applyにしても計算時間は長くなるので、pandarallelを使って並列処理した
+- nb032
   - [Predict Next Point with the IMU data](https://www.kaggle.com/alvinai9603/predict-next-point-with-the-imu-data)
   - IMU使った、次点の予測
+- nb033
+  - nb032を今までのパイプラインに適用
   - 強すぎる.... lb5.394→5.297
+- nb027
+  - lightgbmで外れ値検出
+  - [u++さんの記事](https://upura.hatenablog.com/entry/2019/10/27/211137)によると、過去コンペではaucを0.98から0.7程度に下げた例がある。0.7は結果論
+  - millisSinceGpsEpoch入れていると、adversal validationの
