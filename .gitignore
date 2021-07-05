@@ -144,3 +144,9 @@ output
 
 # vscode
 .vscode
+
+# venv
+venv_outdoor/
+
+# cache
+main/cache/

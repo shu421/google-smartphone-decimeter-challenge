@@ -462,4 +462,28 @@ This method has worked well
 - nb027
   - lightgbmで外れ値検出
   - [u++さんの記事](https://upura.hatenablog.com/entry/2019/10/27/211137)によると、過去コンペではaucを0.98から0.7程度に下げた例がある。0.7は結果論
-  - millisSinceGpsEpoch入れていると、adversal validationの
+
+
+# 20210705
+- nb030
+  - base_testの位置再計算した
+- sub_nb033_1
+  - nb033を使って予測
+  - lb: 294.634
+  - サンプルが少ないデータについても位置の計算をしていたからだと考えられる
+- sub_nb033_2
+  - sub_nb033_1を受けて、サンプル数が21以上のmillisSinceGpsEpochについて、位置の計算を行った
+  - lb: 85.215
+  - なんでだろう...
+  - 外れ値の閾値を43m→50mにしたらむしろスコア上がった(85.199)。多分誤差
+- nb027
+  - millisSinceGpsEpochを落としたらauc=0.89
+  - latDeg, lngDegも落とす
+  - 落としても0.89
+  - 前後の位置(latDeg_prevとか)が含まれているからだろうな
+  - そういう系全部落とすと、latDeg_prev系とdist_prevとdist_nextだけになる(6つ)
+  - f1 score: 0.2264
+  - 流石に特徴量少ないから、snap to gridの特徴量も加えてみる
+- nb034
+  - [snap to grid](https://www.kaggle.com/kuto0633/road-detection-and-creating-grid-points)コピペ
+- 次回、snap to gridの特徴量をnb027に追加する
