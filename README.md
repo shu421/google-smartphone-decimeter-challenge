@@ -487,3 +487,17 @@ This method has worked well
 - nb034
   - [snap to grid](https://www.kaggle.com/kuto0633/road-detection-and-creating-grid-points)コピペ
 - 次回、snap to gridの特徴量をnb027に追加する
+
+# 20210706
+- nb035
+  - nb034を全てのデータに適用
+
+- アイデア: tree, downtown, highwayごとにphoneの重み変えてみるとか？
+  - それぞれのphoneの得意分野ありそう
+
+- nb025
+  - ro, kf, pm, rm, ps : 3.847222643885028
+  - ro, kf, rm, pm, ps :  4.095626241286455
+  - ro, rm, kf, pm, ps :  4.086193360584251
+  - ro, rm, pm, kf, ps :  4.088935286476016
+  - ro, kf, pm, rm, ps, kf :  3.888487843396948
