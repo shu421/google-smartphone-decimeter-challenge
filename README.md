@@ -130,22 +130,26 @@ Status - Android API GnssStatusから収集されたGNSS信号のステータス
 - HasAlmanacData。指定されたインデックスの衛星がアルマナックデータを持っているかどうか。
 - HasEphemerisData: 指定されたインデックスの衛星がエフェメリスデータを持っているかどうか。
 - BasebandCn0DbHz。BasebandCn0DbHz：指定されたインデックスの衛星のベースバンド搬送波ノイズ密度をdB-Hzで表したもの。
-- UncalAccel - Android APIのSensor#TYPE_ACCELEROMETER_UNCALIBRATEDから収集された、校正されていない加速度計からの読み取り値。
+
+UncalAccel - Android APIのSensor#TYPE_ACCELEROMETER_UNCALIBRATEDから収集された、校正されていない加速度計からの読み取り値。
 - utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP (Network Time Protocol)同期後のUTCでの推定デバイス起動時間の合計です。
 - elapsedRealtimeNanos。イベントが発生した時間をナノ秒単位で表したもの。
 - UncalAccel[X/Y/Z]Mps2 - [x/y/z]_uncalib（バイアス補正なし）です。
 - Bias[X/Y/Z]Mps2 - 推定された[x/y/z]_biasです。以前の日付で収集されたデータセットではNullとなります。
-- UncalGyro - Android APIのSensor#TYPE_GYROSCOPE_UNCALIBRATEDから収集された、キャリブレーションされていないジャイロスコープからの読み取り値
+
+UncalGyro - Android APIのSensor#TYPE_GYROSCOPE_UNCALIBRATEDから収集された、キャリブレーションされていないジャイロスコープからの読み取り値
 - utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP（Network Time Protocol）同期後のUTCでの推定デバイス起動時間の合計です。
 - elapsedRealtimeNanos。イベントが発生した時間をナノ秒単位で表したもの。
 - UncalGyro[X/Y/Z]RadPerSec - [X/Y/Z]軸周りの角速度（ドリフト補正なし）をrad/sで表したものです。
 - Drift[X/Y/Z]RadPerSec - [X/Y/Z]軸周りの推定ドリフト量をrad/sで表したものです。以前の日付で収集されたデータセットでは無効です。
-- UncalMag - Android APIのSensor#STRING_TYPE_MAGNETIC_FIELD_UNCALIBRATEDから収集された、校正されていない磁力計からの読み取り値です。
+
+UncalMag - Android APIのSensor#STRING_TYPE_MAGNETIC_FIELD_UNCALIBRATEDから収集された、校正されていない磁力計からの読み取り値です。
 - utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP（Network Time Protocol）同期後のUTCでの推定デバイス起動時間の合計。
 - elapsedRealtimeNanos。イベントが発生した時間をナノ秒単位で表したもの。
 - UncalMag[X/Y/Z]MicroT - [x/y/z]_uncalib（バイアス補正なし）。
 - Bias[X/Y/Z]MicroT - 推定された[x/y/z]_biasです。以前の日付で収集されたデータセットではNullです。
-- OrientationDeg - 各行は、Android APIのSensorManager#getOrientationから収集された、デバイスの推定方位を表します。このメッセージは、2021年3月以降に収集されたログでのみ利用可能です。
+
+OrientationDeg - 各行は、Android APIのSensorManager#getOrientationから収集された、デバイスの推定方位を表します。このメッセージは、2021年3月以降に収集されたログでのみ利用可能です。
 - utcTimeMillis - 以下のelapsedRealtimeNanosと、最近のNTP（Network Time Protocol）同期後のUTCでの推定デバイス起動時間の合計です。
 - elapsedRealtimeNanos - イベントが発生した時のナノ秒単位の時間です。
 - yawDeg - 画面がポートレートモードの場合、この値はアジマス度（0°～360°のモジュラス）に相当します。画面がランドスケープモードの場合は、画面の回転角度（90°または270°）と方位角の和（0°〜360°へのモジュラス）に相当します。方位角とは、-z軸を中心とした回転角度のことです。この値は、デバイスのy軸と磁北極の間の角度を表します。
@@ -506,6 +510,49 @@ This method has worked well
 - 面接とかバイト(言い訳です。1コミットでも良いからすればよかった)
 
 # 20210708
-- nb032の実験用
-  - nb032ではSamusungの予測している。
-  - もっと精度の良いcollectionで試してみる
+- nb037
+  - nb032の実験用
+  - nb032ではSJCの予測している。
+  - SJCは202103以降に収集されているので、GNSSのStatusが使える
+  - 202103以前も、[Estimating the direction with a magnetic sensor](https://www.kaggle.com/museas/estimating-the-direction-with-a-magnetic-sensor)使って方向の予測すればできるのでは
+  - とりあえず、202103以降のデータだけIMUで予測する
+- sub_nb033_3
+  - MTVを学習させてSJCを予測した
+  - lb: 705.836
+  - 同じcollectionを学習しなければならない
+  - SVL: bl, cv: 3.7596290065930966, 11.88683932055823
+  - SJCはdowntownだから最も効果出る
+  - '2021-04-29-US-SJC-3'以外のtestのSJC、phoneもやる
+- sub_nb037
+  - 2021-04-29-US-SJC-3_Pixel4をIMUから予測
+  - lb改善: 5.297→5.273
+  - SJC全部やったら相当上がるなこれ
+
+- nb038
+  - [Data divided into 3 areas(downtown,highway,tree)](https://www.kaggle.com/tyonemoto/data-divided-into-3-areas-downtown-highway-tree)
+
+- 最後に外れ値検出してinterporateで補完する
+
+- sub_nb033_4
+  - position shiftを消してみた
+  - cvだと、position shiftない方が良かった。cvがあっているかの確認
+  - lb 5.364
+  - 多分baselineの作り方がおかしい
+
+- nb033
+  - position shift入れるとcv悪化、lb改善。
+
+- 賢くない実装をしました
+- nb037_1
+  - nb037 + 2021-04-29-US-SJC-3_SamsungS20Ultra
+- nb037_2
+  - nb037_1 + 2021-04-02-US-SJC-1_Pixel4
+- nb037_3
+  - nb037_2 + 2021-04-02-US-SJC-1_Pixel5
+- nb037_4
+  - nb037_3 + 2021-04-02-US-SJC-2_SamusungUltra
+
+- subnb003_5
+  - nb037_4のサブ
+  - 何かミスってるみたい(cvがおかしい)
+  - 次直す
