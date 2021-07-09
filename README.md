@@ -523,7 +523,7 @@ This method has worked well
   - SVL: bl, cv: 3.7596290065930966, 11.88683932055823
   - SJCはdowntownだから最も効果出る
   - '2021-04-29-US-SJC-3'以外のtestのSJC、phoneもやる
-- sub_nb037
+- nb037, sub_nb033_3, sub_nb037
   - 2021-04-29-US-SJC-3_Pixel4をIMUから予測
   - lb改善: 5.297→5.273
   - SJC全部やったら相当上がるなこれ
@@ -544,15 +544,38 @@ This method has worked well
 
 - 賢くない実装をしました
 - nb037_1
-  - nb037 + 2021-04-29-US-SJC-3_SamsungS20Ultra
+  - nb037 + 2021-04-22-US-SJC-2_SamsungS20Ultra
 - nb037_2
   - nb037_1 + 2021-04-02-US-SJC-1_Pixel4
+  - これ地雷
 - nb037_3
   - nb037_2 + 2021-04-02-US-SJC-1_Pixel5
 - nb037_4
-  - nb037_3 + 2021-04-02-US-SJC-2_SamusungUltra
+  - nb037_3 + 2021-04-22-US-SJC-2_SamusungUltra
 
 - subnb003_5
   - nb037_4のサブ
   - 何かミスってるみたい(cvがおかしい)
   - 次直す
+
+# 20210709
+- 前の全部通したやつスコアおかしいから、全部の段階でsubしてみる
+- subnb033_6
+  - nb037_1
+  - lb: 5.311
+- sub_nb033_7
+  - nb037_2
+  - lb: 226.462
+- sub_nb033_8
+  - nb037
+  - 5.311
+- sub_nb033_9
+  - nb037(base_train = baseline)
+
+- nb037_5
+  - sub_nb037 + 2021-04-29-US-SJC-3_SamsungS20Ultra
+
+- sub_nb033_10
+  - nb033_5
+  - 5.320
+- なんでPixel4、samusung個別ならスコア上がるのに一緒だとちょっと悪くなるんだ〜ーー
