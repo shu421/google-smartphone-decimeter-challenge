@@ -550,10 +550,11 @@ This method has worked well
   - これ地雷
 - nb037_3
   - nb037_2 + 2021-04-02-US-SJC-1_Pixel5
+  - これ地雷
 - nb037_4
-  - nb037_3 + 2021-04-22-US-SJC-2_SamusungUltra
+  - nb037_3 + 2021-04-22-US-SJC-2_SamusungS20Ultra
 
-- subnb003_5
+- sub_nb003_5
   - nb037_4のサブ
   - 何かミスってるみたい(cvがおかしい)
   - 次直す
@@ -568,14 +569,25 @@ This method has worked well
   - lb: 226.462
 - sub_nb033_8
   - nb037
-  - 5.311
+  - lb: 5.311
 - sub_nb033_9
-  - nb037(base_train = baseline)
+  - sub_nb037(base_train = baseline)
+  - lb: 5.273
 
 - nb037_5
   - sub_nb037 + 2021-04-29-US-SJC-3_SamsungS20Ultra
 
 - sub_nb033_10
   - nb033_5
-  - 5.320
+  - lb: 5.320
 - なんでPixel4、samusung個別ならスコア上がるのに一緒だとちょっと悪くなるんだ〜ーー
+
+- sub_nb033_11
+  - nb037_3
+  - baseline + 2021-04-02-US-SJC-1_Pixel5のIMU
+  - lb: 227.030
+
+- sub_nb033_12
+  - nb037_4
+  - baseline + 2021-04-22-US-SJC-2_SamusungS20Ultra
+  - lb: 5.394
