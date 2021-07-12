@@ -336,21 +336,21 @@ This method has worked well
   - lb悪化: 5.564
 - [Taroさんdiscussion](https://www.kaggle.com/c/google-smartphone-decimeter-challenge/discussion/245160)
   - high way、tree-lined street、downtownではGNSSも精度が違う。これごとにrunを変える必要がある
-# 20210617
+### 20210617
 - 橋の下だと精度悪くなる？
 <img width="902" alt="スクリーンショット 2021-06-17 8 54 23" src="https://user-images.githubusercontent.com/71954051/122309689-b15a9d00-cf49-11eb-986f-96dc93bd3610.png">
 - nb019とnb020もっと見る
 
-# 20210618
+### 20210618
 - 課題進めた
 
-# 20210620
+### 20210620
 - 課題進めた
 
-# 20210621
+### 20210621
 - 課題進めた
 
-# 20210622
+### 20210622
 - 初期点ずれがち
 - gtとの誤差(dist_err)が大きいか否かを機械学習で求めたら良さそう
 - とにかく、dist_errが大きいものを検知したい
@@ -375,16 +375,16 @@ This method has worked well
   - 外れ値除去の閾値を50→43にしたらスコア上がった
   - 5.477→5.394
 
-# 20210623
+### 20210623
 - nb024
   - 今までのフローを一つのnotebookにまとめた
   - trainは終了
   - 次回、testデータもやる
 
-# 20210624-20210628
+### 20210624-20210628
 - 課題、テスト勉強
 
-# 20210629
+### 20210629
 - nb024
   - フロー整理
 - nb025
@@ -426,10 +426,10 @@ This method has worked well
 - testでは共通するtimestampは限られている
 - deriveにあるtimestampはbaselineの計算できるけど、ないやつはどうするんだろ
 
-# 20210630
+### 20210630
 - サボってました、、、明日の午前やる
 
-# 20210701
+### 20210701
 - deriveにあるtimestampのbaseline補間だけやるか、そこからさらにカルマンフィルタでデータの補間するか
 - 補間するには、base_train,train_derived、base_test,test_derivedに共通するtimestampが必要
   - base_train,train_derived
@@ -444,10 +444,10 @@ This method has worked well
   2. ground_truthとの距離確認
   3. 改善されていたらtest_derivedを使ってtest_derivedの距離推定
 
-# 20210702-0703
+### 20210702-0703
 - groupbyと戦っていた
 
-# 20210704
+### 20210704
 - nb029
   - nb028をfor文で回した
   - 17hくらいかかりそうだから、applyとgroupbyの勉強する
@@ -468,7 +468,7 @@ This method has worked well
   - [u++さんの記事](https://upura.hatenablog.com/entry/2019/10/27/211137)によると、過去コンペではaucを0.98から0.7程度に下げた例がある。0.7は結果論
 
 
-# 20210705
+### 20210705
 - nb030
   - base_testの位置再計算した
 - sub_nb033_1
@@ -492,7 +492,7 @@ This method has worked well
   - [snap to grid](https://www.kaggle.com/kuto0633/road-detection-and-creating-grid-points)コピペ
 - 次回、snap to gridの特徴量をnb027に追加する
 
-# 20210706
+### 20210706
 - nb035
   - nb034を全てのデータに適用
 
@@ -506,10 +506,10 @@ This method has worked well
   - ro, rm, pm, kf, ps :  4.088935286476016
   - ro, kf, pm, rm, ps, kf :  3.888487843396948
 
-# 20210708
+### 20210708
 - 面接とかバイト(言い訳です。1コミットでも良いからすればよかった)
 
-# 20210708
+### 20210708
 - nb037
   - nb032の実験用
   - nb032ではSJCの予測している。
@@ -523,7 +523,7 @@ This method has worked well
   - SVL: bl, cv: 3.7596290065930966, 11.88683932055823
   - SJCはdowntownだから最も効果出る
   - '2021-04-29-US-SJC-3'以外のtestのSJC、phoneもやる
-- sub_nb037
+- nb037, sub_nb033_3, sub_nb037
   - 2021-04-29-US-SJC-3_Pixel4をIMUから予測
   - lb改善: 5.297→5.273
   - SJC全部やったら相当上がるなこれ
@@ -544,15 +544,81 @@ This method has worked well
 
 - 賢くない実装をしました
 - nb037_1
-  - nb037 + 2021-04-29-US-SJC-3_SamsungS20Ultra
+  - nb037 + 2021-04-22-US-SJC-2_SamsungS20Ultra
 - nb037_2
   - nb037_1 + 2021-04-02-US-SJC-1_Pixel4
+  - これ地雷
 - nb037_3
   - nb037_2 + 2021-04-02-US-SJC-1_Pixel5
+  - これ地雷
 - nb037_4
-  - nb037_3 + 2021-04-02-US-SJC-2_SamusungUltra
+  - nb037_3 + 2021-04-22-US-SJC-2_SamusungS20Ultra
 
-- subnb003_5
+- sub_nb003_5
   - nb037_4のサブ
   - 何かミスってるみたい(cvがおかしい)
   - 次直す
+
+### 20210709
+- 前の全部通したやつスコアおかしいから、全部の段階でsubしてみる
+- subnb033_6
+  - nb037_1
+  - lb: 5.311
+- sub_nb033_7
+  - nb037_2
+  - lb: 226.462
+- sub_nb033_8
+  - nb037
+  - lb: 5.311
+- sub_nb033_9
+  - sub_nb037(base_train = baseline)
+  - lb: 5.273
+
+- nb037_5
+  - sub_nb037 + 2021-04-29-US-SJC-3_SamsungS20Ultra
+
+- sub_nb033_10
+  - nb033_5
+  - lb: 5.320
+- なんでPixel4、samusung個別ならスコア上がるのに一緒だとちょっと悪くなるんだ〜ーー
+
+- sub_nb033_11
+  - nb037_3
+  - baseline + 2021-04-02-US-SJC-1_Pixel5のIMU
+  - lb: 227.030
+
+- sub_nb033_12
+  - nb037_4
+  - baseline + 2021-04-22-US-SJC-2_SamusungS20Ultra
+  - lb: 5.394
+
+- nb036
+  - EDA
+  - dist_errをdist_prev,dist_nextから探索したい
+  - thr = 75%+1.5×IQRだとあかん
+  - outlierのdist_prev,nextのmaxと、reject_outlierのdist_prev,nextのminを一致させる閾値を見つけた
+  - outlier(閾値よりdist_errが大きいやつ)の散布図
+  - 右の方のやつは落とすとして、dist_prev==0の外れ値が多すぎる
+  <img width="456" alt="スクリーンショット 2021-07-10 10 59 04" src="https://user-images.githubusercontent.com/71954051/125148529-e5526800-e16d-11eb-9eaf-b023fb928196.png">
+
+  - (紫)2021-04-22-US-SJC-1_Pixel4, SamusungS20Ultraかなりずれてる
+  - (ピンク)2021-04-29-US-SJC-2_Pixel4, SamusungS20Ultraに統合させても良いかも
+  - (赤)2021-04-28-US-SJC-1_Pixel4, SamusungS20Ultraは実験して決める
+
+  ### 20210711
+ - nb036
+   - SJCのmean_scoreと、それぞれのスコアのmean見比べる
+   - 2021-04-22-US-SJC-1_Pixel4: 15.40513722208054
+   - 2021-04-22-US-SJC-1_SamsungS20Ultra: 15.12562785078837
+   - 2021-04-28-US-SJC-1_Pixel4: 14.610152209310147
+   - 2021-04-28-US-SJC-1_SamsungS20Ultra: 14.603669303595279
+   - 2021-04-29-US-SJC-2_Pixel4: 12.538784411167697
+   - 2021-04-29-US-SJC-2_SamsungS20Ultra: 12.377565493740669
+
+   - 生データ通り、04-29の精度が良い
+   - SamsungS20Ultraの方が、Pixel4より精度良い
+
+- マルチパスを発生させているGPSを探して除去するのは？
+
+- nb036
+  - dist_prev,nextが0.4以下のもの落としたら203.93952681071983になった。
