@@ -642,11 +642,11 @@ This method has worked well
   - nearest→linear補間: 3.8371075152805587
   
 - sub_nb033_13
-  - nb037→nb033:  reject outlier + kalmanfilter:  4.498849117070059
-                  phone mean pred :  4.034688363261449
-                  position shift:  3.847222643885028
-                  remove low speed:  3.8006633431440395
-                  lb: 5.177
+  - nb037→nb033:  reject outlier + kalmanfilter:  4.498849117070059  
+                  phone mean pred :  4.034688363261449  
+                  position shift:  3.847222643885028  
+                  remove low speed:  3.8006633431440395  
+                  lb: 5.177  
 
 - nb040
   - EDA
