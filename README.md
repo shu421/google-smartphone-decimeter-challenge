@@ -624,7 +624,33 @@ This method has worked well
   - dist_prev,nextが0.4以下のもの落としたら203.93952681071983になった。
 
 ### 20210713
-- phoneごとに移動距離短いやつ落として線形補完したら精度上がった。nearestも試した
+- phoneごとに移動距離短いやつ落として線形補間したら精度上がった。nearestも試したい
 
 ### 20210713
 - 今日明日はテスト勉強する
+
+### 20210714
+- nb039: remove low speed
+  - 補間方法をlinearからnearestにしたらスコア改善した
+  - before remove lowSpeed 3.8472226439245767
+  - after remove lowSpeed 3.022374370494192
+  - 補間できていなかった、、、
+  - ただ、dist_prevが小さいものを削除しただけでこんなに上がったんだから、ここの処理が本当に重要
+
+  - スタート時は次の位置、ゴール時は前の位置を使って補間: 3.831576198421017
+  - linear補間: 3.8006633431449037
+  - nearest→linear補間: 3.8371075152805587
+  
+- sub_nb033_13
+  - nb037→nb033:  reject outlier + kalmanfilter:  4.498849117070059
+                  phone mean pred :  4.034688363261449
+                  position shift:  3.847222643885028
+                  remove low speed:  3.8006633431440395
+                  lb: 5.177
+
+- nb040
+  - EDA
+
+- sub_nb033_14
+  - nb037→nb037_5→nb033
+  - lb: 5.223 やっぱりだめかー
