@@ -654,7 +654,6 @@ This method has worked well
 - sub_nb033_14
   - nb037→nb037_5→nb033
   - lb: 5.223 やっぱりだめかー
-<<<<<<< HEAD
 
 ### 20210715
 - nb033(filtered_nb037_nb033)
@@ -682,3 +681,36 @@ This method has worked well
 - nb044
   - nb037実験
     - マルチパスの影響が大きい衛星削除も考えたけど、snap to gridの方が効きそう
+
+### 20210718
+- nb045
+  - [Adaptive_gauss+phone_mean](https://www.kaggle.com/bpetrb/adaptive-gauss-phone-mean)コピー
+- nb046
+  - phone meanをnb041に加えた
+  - psmの位置
+  - cv(ro, kf, pm, rm, ps rmls, psm): 3.4515872201087956
+  - cv(ro, kf, pm, rm, ps, psm, rmls): 3.4477104031444266
+    - psm→rmlsが効果ある
+    - meanとってから誤差修正してる
+    - rmls→psmだと、誤差修正してからmean。精度悪化しとる
+  - cv(ro, kf, pm, rm, psm, ps, rmls): 3.431622519264048
+    - psの前でデータ綺麗にしとくと良さげ
+  - cv(ro, kf, pm, psm, rm, ps, rmls): 3.4768515049181348
+    - phones meanした後でremove deviceしても意味ない
+
+  - rmlsの位置
+  - cv(ro, kf, pm, rmls, rm, psm, ps): 3.466
+  - cv(ro, kf, pm, rm, rmls, psm, ps): 3.457784659817073
+  - cv(ro, kf, pm, rm, psm, rmls, ps): 3.4184543506885996  ### 採用
+    > psの前でデータ綺麗にしとくと良さげ
+    - 本当にこれだった
+  - cv(ro, kf, pm, rm, psm, ps, rmls): 3.431622519264048
+
+- sub_nb046_1
+  - cv(ro, kf, pm, rm, ps rmls, psm): 3.4515872201087956
+  - lb: 5.046
+
+- sub_nb046
+  - cv(ro, kf, pm, rm, psm, rmls, ps): 3.4184543506885996
+  - lb: 4.997
+  - 4代嬉しいな！！！
