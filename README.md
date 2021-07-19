@@ -714,3 +714,6 @@ This method has worked well
   - cv(ro, kf, pm, rm, psm, rmls, ps): 3.4184543506885996
   - lb: 4.997
   - 4代嬉しいな！！！
+
+### 20210719
+- nb048: EDA
