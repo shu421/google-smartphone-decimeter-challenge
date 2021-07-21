@@ -717,3 +717,6 @@ This method has worked well
 
 ### 20210719
 - nb048: EDA
+
+### 20210720
+- 休息の日
