@@ -733,6 +733,9 @@ This method has worked well
   - thr = 15
     - original: 19.81370527195164
     - snap: 19.395721673600463
+  - thr = 20
+    - 19.81370527195164
+    - 18.663785791885832
   - thr = 30
      - 19.81370527195164
      - 17.803037634589707
@@ -749,3 +752,8 @@ This method has worked well
 - phoneごとに閾値決めた方が良いよなぁ
   - tree, downtown, highwayごとに散らばりかた違う
   - snap to gridは道路の中心を検知するから、道路が狭い道の方が誤差少なそう
+  - 実験してみたけど、phoneごとに閾値かなり違う
+
+- nb052
+  - post processing後のデータにはsnap to grid効かないから、先にやってみる
+  -
