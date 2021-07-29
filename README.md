@@ -829,3 +829,7 @@ This method has worked well
     - generate point
     - search closest point
     - apply grid point
+
+### 20210729
+- low Speedをsnap to girdするとだめ
+- ここだけ処理かえる
