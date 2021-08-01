@@ -833,3 +833,18 @@ This method has worked well
 ### 20210729
 - low Speedをsnap to girdするとだめ
 - ここだけ処理かえる
+
+# 20210730
+- sub_n055
+- SJCをsnap to grid
+- trainのmax_thr, min_thr = 50, 0
+- test, min_thr = 30, 10 タイポしてる
+  - cv: 3.142981308233182
+  - lb: 4.850
+
+# 20210801
+- train: nb037, test: nb037_5でやってるのに気づいた
+- subとかして検証したけど、このままで良い
+- nb059
+  - train_roの方がtrain_ro_kfより精度高かったからこっちでpost processingしたけど、だめだった
+  - カルマンフィルターは精度上げるし、データをいい感じに並べてくれる
