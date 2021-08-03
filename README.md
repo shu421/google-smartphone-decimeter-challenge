@@ -848,3 +848,10 @@ This method has worked well
 - nb059
   - train_roの方がtrain_ro_kfより精度高かったからこっちでpost processingしたけど、だめだった
   - カルマンフィルターは精度上げるし、データをいい感じに並べてくれる
+
+### 20210803
+- SJC th=21
+- not SJC th=45
+
+- nb062: a car is moving or not
+  - 動いていないところ移動平均とっても良いかも
