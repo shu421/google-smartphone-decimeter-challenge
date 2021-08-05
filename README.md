@@ -870,7 +870,7 @@ This method has worked well
     - lb: 5.914
 
 ### 20210805
-- 解法
+- 解法(nb056)
   - [predict next point](https://www.kaggle.com/alvinai9603/predict-next-point-with-the-imu-data)
   - reject outlier
   - [kalman filter](https://www.kaggle.com/emaerthin/demonstration-of-the-kalman-filter)
