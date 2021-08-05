@@ -870,6 +870,17 @@ This method has worked well
     - lb: 5.914
 
 ### 20210805
+- 解法
+  -[predict next point](https://www.kaggle.com/alvinai9603/predict-next-point-with-the-imu-data)
+  - reject outlier
+  - [kalman filter](https://www.kaggle.com/emaerthin/demonstration-of-the-kalman-filter)
+  - [phone mean pred](https://www.kaggle.com/t88take/gsdc-phones-mean-prediction)
+  - [remove device](https://www.kaggle.com/columbia2131/device-eda-interpolate-by-removing-device-en-ja)
+  - [phones mean](https://www.kaggle.com/bpetrb/adaptive-gauss-phone-mean)
+  - remove low speed
+  - [position shift](https://www.kaggle.com/wrrosa/gsdc-position-shift)
+  - [snap to grid](https://www.kaggle.com/kuto0633/road-detection-and-creating-grid-points)
+    - ground truth使用
 - 結果
   - cv: 4.848
   - public lb: 3.416
