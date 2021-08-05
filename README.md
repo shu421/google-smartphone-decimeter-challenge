@@ -855,3 +855,16 @@ This method has worked well
 
 - nb062: a car is moving or not
   - 動いていないところ移動平均とっても良いかも
+
+### 20210804
+- ro, kf, pm, rm, psm, rnm, rmls, ps: 3.41562085034638
+- ro, kf, pm, rm, psm, rmls, rnm, ps: 3.409697544696715
+- ro, rnm, kf, pm, rm, psm, rmls, ps: 3.426740547622089
+- ro, kf, pm, rm, psm, rmls, ps, rnm: 3.132047932482537
+- testには適用できなかった
+- ラストサブはアンサンブルする
+  - nb065
+    -  remove low speedとposition shiftのパラメータ変えた
+  - これとnb056(snap to girdあり)を0.05:0.09で混ぜる
+    - cv: 3.137867005883899
+    - lb: 5.914
