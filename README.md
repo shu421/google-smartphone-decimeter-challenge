@@ -834,7 +834,7 @@ This method has worked well
 - low Speedをsnap to girdするとだめ
 - ここだけ処理かえる
 
-# 20210730
+### 20210730
 - sub_n055
 - SJCをsnap to grid
 - trainのmax_thr, min_thr = 50, 0
@@ -842,7 +842,7 @@ This method has worked well
   - cv: 3.142981308233182
   - lb: 4.850
 
-# 20210801
+### 20210801
 - train: nb037, test: nb037_5でやってるのに気づいた
 - subとかして検証したけど、このままで良い
 - nb059
@@ -881,7 +881,7 @@ This method has worked well
   - [position shift](https://www.kaggle.com/wrrosa/gsdc-position-shift)
   - [snap to grid](https://www.kaggle.com/kuto0633/road-detection-and-creating-grid-points)
     - ground truth使用
-- 公開ノートブックに非常に助けられました。ありがとうございます。
+- 公開ノートブックに非常に助けられました。公開してくださった皆さん、ありがとうございます。
     - ground truth使用
 - 結果
   - cv: 4.848
