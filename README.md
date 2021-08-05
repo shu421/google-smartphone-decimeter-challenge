@@ -882,7 +882,6 @@ This method has worked well
   - [snap to grid](https://www.kaggle.com/kuto0633/road-detection-and-creating-grid-points)
     - ground truth使用
 - 公開ノートブックに非常に助けられました。公開してくださった皆さん、ありがとうございます。
-    - ground truth使用
 - 結果
   - cv: 4.848
   - public lb: 3.416
