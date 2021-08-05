@@ -871,7 +871,7 @@ This method has worked well
 
 ### 20210805
 - 解法
-  -[predict next point](https://www.kaggle.com/alvinai9603/predict-next-point-with-the-imu-data)
+  - [predict next point](https://www.kaggle.com/alvinai9603/predict-next-point-with-the-imu-data)
   - reject outlier
   - [kalman filter](https://www.kaggle.com/emaerthin/demonstration-of-the-kalman-filter)
   - [phone mean pred](https://www.kaggle.com/t88take/gsdc-phones-mean-prediction)
